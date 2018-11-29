@@ -1,5 +1,6 @@
 package com.federicobenedetti.res;
 
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,11 +14,18 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+
+        this.user = new User(intent.getStringExtra("name"),
+                intent.getStringExtra("email"),
+                intent.getStringExtra("pURL"));
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
