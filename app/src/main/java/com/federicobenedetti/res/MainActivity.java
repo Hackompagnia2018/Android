@@ -22,7 +22,7 @@ import com.squareup.picasso.Picasso;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
-    private User user;
+    static User user;
 
     DrawerLayout mDrawerLayout;
     NavigationView navigationView;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Intent intent = getIntent();
-        this.user = new User(intent.getStringExtra("name"),
+        user = new User(intent.getStringExtra("name"),
                 intent.getStringExtra("email"),
                 intent.getStringExtra("pURL"));
 
@@ -116,4 +116,12 @@ public class MainActivity extends AppCompatActivity {
         setTitle(title);
     }
 
+
+    public static String getUserPURL() {
+        return user.getPicURL();
+    }
+
+    public static String getUserName() {
+        return user.getName();
+    }
 }

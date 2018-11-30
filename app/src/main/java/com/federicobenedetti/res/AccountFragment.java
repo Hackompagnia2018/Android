@@ -7,10 +7,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 
 public class AccountFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
+    private User user;
 
     public AccountFragment() {
         // Required empty public constructor
@@ -30,8 +35,15 @@ public class AccountFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        View view = inflater.inflate(R.layout.fragment_account, container, false);
 
+        ImageView imageViewAccount = view.findViewById(R.id.imageview_account);
+        Picasso.get().load(MainActivity.getUserPURL()).into(imageViewAccount);
+
+        TextView textViewAccountName = view.findViewById(R.id.textview_account_name);
+        textViewAccountName.setText(MainActivity.getUserName());
+
+        return view;
 
     }
 
