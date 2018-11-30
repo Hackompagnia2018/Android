@@ -8,12 +8,12 @@ public class Product {
     private String pNumber;
     private boolean bOrS = false; // false = Buyer, true = Seller
     private int quantity;
-    private int price;
+    private double price;
 
     public Product() {
     }
 
-    public Product(String title, String product, String place, String address, String pNumber, boolean bOrS, int quantity, int price) {
+    public Product(String title, String product, String place, String address, String pNumber, boolean bOrS, int quantity, double price) {
         this.title = title;
         this.product = product;
         this.place = place;
@@ -52,7 +52,7 @@ public class Product {
         return quantity;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 }

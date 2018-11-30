@@ -55,16 +55,16 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/descrizione_cardview"
                 android:layout_toEndOf="@id/quantita_cardview"
-                android:id="@+id/indirizzo_cardview"
+                android:id="@+id/luogo_cardview"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="27dp"
-                android:text="Via Zio Paperoni 10" />
+                android:text="Serra San Quirico" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/descrizione_cardview"
-                android:layout_toEndOf="@id/indirizzo_cardview"
+                android:layout_toEndOf="@id/luogo_cardview"
                 android:id="@+id/numeroCell_cardview"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="35dp"
