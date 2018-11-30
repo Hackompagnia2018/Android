@@ -53,9 +53,8 @@ public class LoginActivity extends AppCompatActivity {
                         .start(new BaseCallback<UserProfile, AuthenticationException>() {
                             @Override
                             public void onSuccess(UserProfile information) {
-                                Log.i(TAG, "onSuccess, EMAIL: " + information.getEmail());
-                                Log.i(TAG, "onSuccess, NICKNAME: " + information.getNickname());
                                 Log.i(TAG, "onSuccess, NAME: " + information.getName());
+                                Log.i(TAG, "onSuccess, EMAIL: " + information.getEmail());
                                 Log.i(TAG, "onSuccess, PictureURL: " + information.getPictureURL());
 
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -84,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
 
         WebAuthProvider.init(account)
                 .withAudience("https://" + getString(R.string.com_auth0_domain) + "/userinfo")
-                .withScope("openid profile")
+                .withScope("openid profile email")
                 .withCustomTabsOptions(options)
                 .start(this, authCallback);
     }

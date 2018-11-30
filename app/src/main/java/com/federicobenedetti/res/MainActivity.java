@@ -15,8 +15,11 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements SearchFragment.OnFragmentInteractionListener {
     private User user;
@@ -25,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
     NavigationView navigationView;
     Toolbar toolbar;
 
-    Fragment fragment = null;
 
     private final String TAG = "MainActivity";
 
@@ -43,10 +45,16 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
         mDrawerLayout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
 
-        // Set Image on the Navigation Drawer header
+        // Set Image and Text on the Navigation Drawer header
         final View hView = navigationView.getHeaderView(0);
         ImageView imageViewHeader = hView.findViewById(R.id.imageview_header);
         Picasso.get().load(this.user.getPicURL()).into(imageViewHeader);
+
+        TextView textViewHeader = hView.findViewById(R.id.textview_header);
+        textViewHeader.setText(this.user.getName());
+
+        TextView textViewHeaderEmail = hView.findViewById(R.id.textview_header_email);
+        textViewHeaderEmail.setText(this.user.getEmail());
 
         setSupportActionBar(toolbar);
 
@@ -54,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
 
-        setFragment(new SearchFragment());
+        setFragment(new SearchFragment(),"Search");
 
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -65,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
 
                         switch (menuItem.toString()) {
                             case "Search":
-                                setFragment(new SearchFragment());
+                                setFragment(new SearchFragment(), "Search");
                                 break;
 
                             case "Account":
@@ -78,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
                                 break;
 
                             default:
-                                setFragment(new SearchFragment());
+                                setFragment(new SearchFragment(), "Search");
                                 break;
                         }
                         mDrawerLayout.closeDrawers();
@@ -87,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
                 });
     }
 
-    private void setFragment(Fragment fragment) {
+    private void setFragment(Fragment fragment, String title) {
         Class fragmentClass = fragment.getClass();
 
         try {
@@ -104,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
         navigationView.setCheckedItem(0);
 
         // Set action bar title
-        setTitle(getString(R.string.search));
+        setTitle(title);
     }
 
     @Override
