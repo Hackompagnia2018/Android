@@ -1,15 +1,19 @@
 package com.federicobenedetti.res;
 
 import android.content.Intent;
+import android.media.Image;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +30,13 @@ public class MainActivity extends AppCompatActivity {
         this.user = new User(intent.getStringExtra("name"),
                 intent.getStringExtra("email"),
                 intent.getStringExtra("pURL"));
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        View hView =  navigationView.getHeaderView(0);
+        ImageView imageViewHeader = hView.findViewById(R.id.imageview_header);
+
+        Picasso.get().load(this.user.getPicURL()).into(imageViewHeader);
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
@@ -61,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
