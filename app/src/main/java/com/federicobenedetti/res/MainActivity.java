@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
     Toolbar toolbar;
 
     Fragment fragment = null;
-    Class fragmentClass;
 
     private final String TAG = "MainActivity";
 
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
 
-        setDefaultFragment();
+        setFragment(new SearchFragment());
 
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -66,7 +65,10 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
 
                         switch (menuItem.toString()) {
                             case "Search":
-                                fragmentClass = SearchFragment.class;
+                                setFragment(new SearchFragment());
+                                break;
+
+                            case "Account":
                                 break;
 
                             case "Settings":
@@ -76,36 +78,17 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
                                 break;
 
                             default:
-                                fragmentClass = SearchFragment.class;
+                                setFragment(new SearchFragment());
                                 break;
                         }
-
-                        fragmentClass = SearchFragment.class;
-
-                        try {
-                            fragment = (Fragment) fragmentClass.newInstance();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-
-                        // Insert the fragment by replacing any existing fragment
-                        FragmentManager fragmentManager = getSupportFragmentManager();
-                        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-
-                        // Highlight the selected item has been done by NavigationView
-                        menuItem.setChecked(true);
-                        // Set action bar title
-                        setTitle(menuItem.getTitle());
-
                         mDrawerLayout.closeDrawers();
-
                         return true;
                     }
                 });
     }
 
-    private void setDefaultFragment() {
-        fragmentClass = SearchFragment.class;
+    private void setFragment(Fragment fragment) {
+        Class fragmentClass = fragment.getClass();
 
         try {
             fragment = (Fragment) fragmentClass.newInstance();
