@@ -76,11 +76,17 @@ public class MainActivity extends AppCompatActivity {
                                 setFragment(new SearchFragment(), "Search");
                                 break;
 
+                            case "New Sale":
+                                break;
+
                             case "Account":
                                 setFragment(new AccountFragment(), "Account");
                                 break;
 
                             case "Settings":
+                                break;
+
+                            case "Help":
                                 break;
 
                             case "Logout":
