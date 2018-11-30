@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Titolo"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/titolo_cardview"/>
+
+            <TextView
+                android:layout_width="275dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titolo_cardview"
+                android:id="@+id/descrizione_cardview"
+                android:layout_marginTop="10dp"
+                android:text="descrizione descrizione descrizione descrizione" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/descrizione_cardview"
+                android:id="@+id/prezzo_cardview"
+                android:layout_marginTop="10dp"
+                android:text="350€" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/descrizione_cardview"
+                android:layout_toEndOf="@id/prezzo_cardview"
+                android:id="@+id/quantita_cardview"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="27dp"
+                android:text="10T" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/descrizione_cardview"
+                android:layout_toEndOf="@id/quantita_cardview"
+                android:id="@+id/indirizzo_cardview"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="27dp"
+                android:text="Via Zio Paperoni 10" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/descrizione_cardview"
+                android:layout_toEndOf="@id/indirizzo_cardview"
+                android:id="@+id/numeroCell_cardview"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="35dp"
+                android:text="+39 358958714" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
