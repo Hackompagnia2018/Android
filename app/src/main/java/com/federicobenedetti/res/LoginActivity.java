@@ -89,5 +89,10 @@ public class LoginActivity extends AppCompatActivity {
                 .start(this, authCallback);
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
 
 }
