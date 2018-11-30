@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                                 i.setType("message/rfc822");
                                 i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"example@example.com"});
                                 i.putExtra(Intent.EXTRA_SUBJECT, "Customer Support");
-                                i.putExtra(Intent.EXTRA_TEXT   , "body of email");
+                                i.putExtra(Intent.EXTRA_TEXT   , "Write here your problem");
                                 try {
                                     startActivity(Intent.createChooser(i, "Send mail..."));
                                 } catch (android.content.ActivityNotFoundException ex) {
