@@ -7,9 +7,9 @@
     android:id="@+id/search_fragment">
 
     <SearchView
+        android:id="@+id/searchview_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/searchview_fragment">
-    </SearchView>
+        android:paddingTop="10dp"></SearchView>
 
 </FrameLayout>

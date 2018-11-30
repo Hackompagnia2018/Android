@@ -20,7 +20,14 @@ import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity implements SearchFragment.OnFragmentInteractionListener {
     private User user;
+
     DrawerLayout mDrawerLayout;
+    NavigationView navigationView;
+    Toolbar toolbar;
+
+    Fragment fragment = null;
+    Class fragmentClass;
+
     private final String TAG = "MainActivity";
 
     @Override
@@ -33,9 +40,9 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
                 intent.getStringExtra("email"),
                 intent.getStringExtra("pURL"));
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         mDrawerLayout = findViewById(R.id.drawer_layout);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
 
         // Set Image on the Navigation Drawer header
         final View hView = navigationView.getHeaderView(0);
@@ -48,14 +55,13 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
 
+        setDefaultFragment();
+
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         Log.i(TAG, "MenuItem: " + menuItem.toString());
-                        Fragment fragment = null;
-                        Class fragmentClass;
-
                         menuItem.setChecked(true);
 
                         switch (menuItem.toString()) {
@@ -96,6 +102,26 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
                         return true;
                     }
                 });
+    }
+
+    private void setDefaultFragment() {
+        fragmentClass = SearchFragment.class;
+
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Insert the fragment by replacing any existing fragment
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+
+        // Highlight the selected item has been done by NavigationView
+        navigationView.setCheckedItem(0);
+
+        // Set action bar title
+        setTitle(getString(R.string.search));
     }
 
     @Override
