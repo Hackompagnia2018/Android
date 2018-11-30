@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onSuccess(@NonNull Credentials credentials) {
+            public void onSuccess(@NonNull final Credentials credentials) {
                 Log.i(TAG, "authCallback credentials AccessToken: " + credentials.getAccessToken());
 
                 AuthenticationAPIClient authentication = new AuthenticationAPIClient(account);
@@ -61,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.putExtra("name", information.getName());
                                 intent.putExtra("email", information.getEmail());
                                 intent.putExtra("pURL", information.getPictureURL());
+                                intent.putExtra("token", credentials.getAccessToken());
                                 startActivity(intent);
                                 finish();
                             }

@@ -1,6 +1,5 @@
 package com.federicobenedetti.res;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,14 +11,20 @@ import android.view.ViewGroup;
 public class SearchFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
+
     public SearchFragment() {
         // Required empty public constructor
     }
-    
+
     public static SearchFragment newInstance(String param1, String param2) {
         SearchFragment fragment = new SearchFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
+
+        try {
+            MainActivity.requestBuilderWithBearerToken(MainActivity.getUserToken(), "http://90.147.188.51/");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return fragment;
     }
 
@@ -33,7 +38,10 @@ public class SearchFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search, container, false);
+
+
     }
+
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

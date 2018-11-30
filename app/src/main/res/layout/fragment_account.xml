@@ -6,24 +6,24 @@
     tools:context=".AccountFragment">
 
     <ImageView
+        android:id="@+id/imageview_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/imageview_account"
         android:scaleType="fitXY" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
+        android:background="@android:color/darker_gray" />
 
 
     <TextView
+        android:id="@+id/textview_account_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:gravity="center"
         android:layout_below="@id/imageview_account"
-        android:id="@+id/textview_account_name"/>
+        android:gravity="center"
+        android:textSize="30dp" />
 
 
 </RelativeLayout>

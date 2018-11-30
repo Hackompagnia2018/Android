@@ -1,12 +1,10 @@
 package com.federicobenedetti.res;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -19,17 +17,42 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
+import java.io.IOException;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     static User user;
-
+    private final String TAG = "MainActivity";
     DrawerLayout mDrawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
 
+    public static String getUserPURL() {
+        return user.getPicURL();
+    }
 
-    private final String TAG = "MainActivity";
+    public static String getUserName() {
+        return user.getName();
+    }
+
+    public static String getUserToken() {
+        return user.getToken();
+    }
+
+    public static Response requestBuilderWithBearerToken(String userToken, String url) throws IOException {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .addHeader("cache-control", "no-cache")
+                .addHeader("Authorization", "Bearer " + userToken)
+                .build();
+
+        return client.newCall(request).execute();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +62,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         user = new User(intent.getStringExtra("name"),
                 intent.getStringExtra("email"),
-                intent.getStringExtra("pURL"));
+                intent.getStringExtra("pURL"),
+                intent.getStringExtra("token"));
+
 
         navigationView = findViewById(R.id.nav_view);
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -62,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
 
-        setFragment(new SearchFragment(),"Search");
+        setFragment(new SearchFragment(), "Search");
 
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -120,14 +145,5 @@ public class MainActivity extends AppCompatActivity {
 
         // Set action bar title
         setTitle(title);
-    }
-
-
-    public static String getUserPURL() {
-        return user.getPicURL();
-    }
-
-    public static String getUserName() {
-        return user.getName();
     }
 }
