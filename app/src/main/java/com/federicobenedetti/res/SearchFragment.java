@@ -19,12 +19,6 @@ public class SearchFragment extends Fragment {
     public static SearchFragment newInstance(String param1, String param2) {
         SearchFragment fragment = new SearchFragment();
 
-        try {
-            MainActivity.requestBuilderWithBearerToken(MainActivity.getUserToken(), "http://90.147.188.51/");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         return fragment;
     }
 
@@ -37,8 +31,13 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
-
+        View v = inflater.inflate(R.layout.fragment_search, container, false);
+        try {
+            MainActivity.requestBuilderWithBearerToken(MainActivity.getUserToken(), "http://90.147.188.51/");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return v;
 
     }
 
