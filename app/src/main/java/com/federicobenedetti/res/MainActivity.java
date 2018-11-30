@@ -21,7 +21,7 @@ import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
-public class MainActivity extends AppCompatActivity implements SearchFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity {
     private User user;
 
     DrawerLayout mDrawerLayout;
@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
                                 break;
 
                             case "Account":
+                                setFragment(new AccountFragment(), "Account");
                                 break;
 
                             case "Settings":
@@ -115,9 +116,4 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
         setTitle(title);
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-
-    }
 }
