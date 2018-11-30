@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -113,6 +114,16 @@ public class MainActivity extends AppCompatActivity {
                                 break;
 
                             case "Help":
+                                Intent i = new Intent(Intent.ACTION_SEND);
+                                i.setType("message/rfc822");
+                                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"example@example.com"});
+                                i.putExtra(Intent.EXTRA_SUBJECT, "Customer Support");
+                                i.putExtra(Intent.EXTRA_TEXT   , "body of email");
+                                try {
+                                    startActivity(Intent.createChooser(i, "Send mail..."));
+                                } catch (android.content.ActivityNotFoundException ex) {
+                                    Toast.makeText(MainActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                                }
                                 break;
 
                             case "Logout":
