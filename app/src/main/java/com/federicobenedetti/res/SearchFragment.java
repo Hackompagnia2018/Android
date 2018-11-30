@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 
 public class SearchFragment extends Fragment {
@@ -37,6 +39,16 @@ public class SearchFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        Spinner spinner = v.findViewById(R.id.search_spinner);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(v.getContext(),
+                R.array.cities_array, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(adapter);
+
         return v;
 
     }
