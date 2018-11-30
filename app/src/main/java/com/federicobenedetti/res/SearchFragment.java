@@ -18,10 +18,9 @@ import android.widget.Spinner;
 public class SearchFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     private final String TAG = " SearchFragment";
     private OnFragmentInteractionListener mListener;
-
+    private String spinnerResult;
 
     public SearchFragment() {
-        // Required empty public constructor
     }
 
     public static SearchFragment newInstance(String param1, String param2) {
@@ -38,7 +37,6 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_search, container, false);
         try {
             MainActivity.requestBuilderWithBearerToken(MainActivity.getUserToken(), "http://90.147.188.51/");
@@ -46,7 +44,7 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
             e.printStackTrace();
         }
 
-        Spinner spinner = v.findViewById(R.id.search_spinner);
+        final Spinner spinner = v.findViewById(R.id.search_spinner);
         spinner.setOnItemSelectedListener(this);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(v.getContext(),
@@ -58,16 +56,25 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
 
         final SearchView sv = v.findViewById(R.id.searchview_fragment);
 
-
         Button b = v.findViewById(R.id.search_button);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CharSequence sv_text = sv.getQuery();
+                String sv_text = sv.getQuery().toString();
+
+                spinnerResult = spinner.getSelectedItem().toString();
+                System.out.println("Spinner " + spinnerResult);
+
+                Intent intent = new Intent(getContext(), SearchResultActivity.class);
+
+                intent.putExtra("QueryString", sv_text);
+                intent.putExtra("SpinnerSelection", spinnerResult);
+
                 Log.i(TAG, "SearchView text: " + sv_text);
-                // Intent intent = new Intent(getContext(), SearchResultActivity.class);
-                // startActivity(intent);
+                Log.i(TAG, "SpinnerSelection: " + spinnerResult);
+
+                startActivity(intent);
             }
         });
 
@@ -89,12 +96,15 @@ public class SearchFragment extends Fragment implements AdapterView.OnItemSelect
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        Spinner spinner = parent.findViewById(R.id.search_spinner);
+        if (spinner != null) {
+            spinnerResult =  spinner.getItemAtPosition(position).toString();
+        }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
+        return;
     }
 
     public interface OnFragmentInteractionListener {
