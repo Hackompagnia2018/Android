@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
                                 break;
 
                             case "New Sale":
+                                setFragment(new NewSaleFragment(), "New Sale");
                                 break;
 
                             case "Account":
