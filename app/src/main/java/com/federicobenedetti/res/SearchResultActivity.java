@@ -6,6 +6,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class SearchResultActivity extends AppCompatActivity {
 
@@ -28,6 +31,9 @@ public class SearchResultActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        TextView t = findViewById(R.id.textview_search_result);
+        t.setText("Product for '" + qs + "' in '" + ss + "':");
 
     }
 
