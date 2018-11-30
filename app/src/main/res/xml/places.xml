@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<places>
+    <place name="Abruzzo">
+        <city>Chieti</city>
+        <city>LAquila</city>
+        <city>Pescara</city>
+        <city>Teramo</city>
+    </place>
+    <place name="Basilicata">
+        <city>Matera</city>
+        <city>Potenza</city>
+    </place>
+    <place name="Calabria">
+        <city>Reggio Calabria</city>
+        <city>Catanzaro</city>
+        <city>Cosenza</city>
+        <city>Crotone</city>
+        <city>Vibo Valentia</city>
+    </place>
+    <place name="Campania">
+        <city>Avellino</city>
+        <city>Benevento</city>
+        <city>Caserta</city>
+        <city>Napoli</city>
+        <city>Salerno</city>
+    </place>
+    <place name="Emilia Romagna">
+        <city>Bologna</city>
+        <city>Ferrara</city>
+        <city>Forlì</city>
+        <city>Modena</city>
+        <city>Parma</city>
+        <city>Piacenza</city>
+        <city>Ravenna</city>
+        <city>Reggio Emilia</city>
+        <city>Rimini</city>
+    </place>
+    <place name="Friuli-Venezia Giulia">
+        <city>Gorizia</city>
+        <city>Pordenone</city>
+        <city>Trieste</city>
+        <city>Udine</city>
+    </place>
+    <place name="Lazio">
+        <city>Frosinone</city>
+        <city>Latina</city>
+        <city>Rieti</city>
+        <city>Roma</city>
+        <city>Viterbo</city>
+    </place>
+    <place name="Liguria">
+        <city>Genova</city>
+        <city>Imperia</city>
+        <city>Savona</city>
+    </place>
+    <place name="Lombardia">
+        <city>Bergamo</city>
+        <city>Brescia</city>
+        <city>Como</city>
+        <city>Cremona</city>
+        <city>Lecco</city>
+        <city>Lodi</city>
+        <city>Mantova</city>
+        <city>Milano</city>
+        <city>Pavia</city>
+        <city>Sondrio</city>
+        <city>Varese</city>
+    </place>
+    <place name="Marche">
+        <city>Ancona</city>
+        <city>Ascoli Piceno</city>
+        <city>Fermo</city>
+        <city>Macerata</city>
+        <city>Pesaro-Urbino</city>
+    </place>
+    <place name="Molise">
+        <city>Campobasso</city>
+        <city>Isernia</city>
+    </place>
+    <place name="Piemonte">
+        <city>Alessandria</city>
+        <city>Asti</city>
+        <city>Biella</city>
+        <city>Cuneo</city>
+        <city>Novara</city>
+        <city>Turin</city>
+        <city>Verbano-Cosio-Ossola</city>
+        <city>Vercelli</city>
+    </place>
+    <place name="Puglia">
+        <city>Bari</city>
+        <city>Barletta-Andria-Trani</city>
+        <city>Brindisi</city>
+        <city>Foggia</city>
+        <city>Lecce</city>
+        <city>Taranto</city>
+    </place>
+    <place name="Sardegna">
+        <city>Cagliari</city>
+        <city>Carbonia Iglesias</city>
+        <city>Medio Campidano</city>
+        <city>Nuoro</city>
+        <city>Ogliastra</city>
+        <city>Olbia</city>
+        <city>Tempio</city>
+        <city>Oristano</city>
+        <city>Sassari</city>
+    </place>
+    <place name="Sicilia">
+        <city>Agrigento</city>
+        <city>Caltanissetta</city>
+        <city>Catania</city>
+        <city>Enna</city>
+        <city>Messina</city>
+        <city>Palermo</city>
+        <city>Ragusa</city>
+        <city>Siracusa</city>
+        <city>Trapani</city>
+    </place>
+    <place name="Toscana">
+        <city>Arezzo</city>
+        <city>Firenze</city>
+        <city>Grosseto</city>
+        <city>Livorno</city>
+        <city>Lucca</city>
+        <city>Massa-Carrara</city>
+        <city>Pisa</city>
+        <city>Pistoia</city>
+        <city>Prato</city>
+        <city>Siena</city>
+    </place>
+    <place name="Trentino-Alto Adige">
+        <city>Bolzano</city>
+        <city>Trento</city>
+    </place>
+    <place name="Umbria">
+        <city>Perugia</city>
+        <city>Terni</city>
+    </place>
+    <place name="Valle DAosta">
+        <city>Aosta</city>
+    </place>
+    <place name="Veneto">
+        <city>Belluno</city>
+        <city>Padova</city>
+        <city>Rovigo</city>
+        <city>Treviso</city>
+        <city>Venezia</city>
+        <city>Verona</city>
+        <city>Vicenza</city>
+    </place>
+</places>
