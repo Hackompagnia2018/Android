@@ -33,11 +33,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Dialog dialog) {
                 Log.i(TAG, "onFailure");
+                finish();
             }
 
             @Override
             public void onFailure(AuthenticationException exception) {
                 Log.i(TAG, "onFailure AuthException");
+                finish();
             }
 
             @Override
@@ -61,11 +63,12 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.putExtra("email", information.getEmail());
                                 intent.putExtra("pURL", information.getPictureURL());
                                 startActivity(intent);
+                                finish();
                             }
 
                             @Override
                             public void onFailure(AuthenticationException error) {
-                                //user information request failed
+                                finish();
                             }
                         });
             }

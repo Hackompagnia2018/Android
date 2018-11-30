@@ -1,7 +1,6 @@
 package com.federicobenedetti.res;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-        View hView =  navigationView.getHeaderView(0);
+        View hView = navigationView.getHeaderView(0);
         ImageView imageViewHeader = hView.findViewById(R.id.imageview_header);
 
         Picasso.get().load(this.user.getPicURL()).into(imageViewHeader);
@@ -76,14 +75,8 @@ public class MainActivity extends AppCompatActivity {
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        // set item as selected to persist highlight
                         menuItem.setChecked(true);
-                        // close drawer when item is tapped
                         mDrawerLayout.closeDrawers();
-
-                        // Add code here to update the UI based on the item selected
-                        // For example, swap UI fragments here
-
                         return true;
                     }
                 });
@@ -99,5 +92,10 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }
